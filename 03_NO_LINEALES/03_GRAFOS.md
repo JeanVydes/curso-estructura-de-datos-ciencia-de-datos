@@ -1,35 +1,35 @@
 # Grafos y Modelado de Redes
 
-Un grafo es una estructura de datos no lineal compuesta por un conjunto de nodos (o vertices) y un conjunto de aristas (o conexiones) que vinculan pares de nodos.
+Un grafo es una estructura de datos no lineal compuesta por un conjunto de nodos (o vértices) y un conjunto de aristas (o conexiones) que vinculan pares de nodos.
 
-Los grafos son la herramienta principal cuando la informacion mas valiosa de un problema no esta en las entidades individuales, sino en las relaciones que existen entre ellas.
+Los grafos son la herramienta principal cuando la información más valiosa de un problema no está en las entidades individuales, sino en las relaciones que existen entre ellas.
 
-## Como se representan en memoria
+## Cómo se Representan en Memoria
 
 Existen dos formas principales de representar un grafo en memoria: la matriz de adyacencia y la lista de adyacencia.
 
 ### Lista de Adyacencia
 
-Es la forma mas comun en C# y ciencia de datos. Utiliza un diccionario donde cada llave es un nodo y su valor es una lista de los nodos con los que esta conectado.
+Es la forma más común en C# y en ingeniería de ciencia de datos. Utiliza un diccionario donde cada llave es un nodo y su valor es una lista de los nodos con los que está conectado.
 
 ```
 Grafo de conexiones entre 3 usuarios:
 
 [ Alice ] <-----> [ Bob ] <-----> [ Charlie ]
 
-Representacion como Lista de Adyacencia en C#:
+Representación como Lista de Adyacencia en C#:
 
 Diccionario:
   "Alice"   -> [ "Bob" ]
   "Bob"     -> [ "Alice", "Charlie" ]
   "Charlie" -> [ "Bob" ]
 
-Esta representacion consume memoria O(V + E), donde V es el numero de vertices y E el numero de aristas. Es ideal para redes dispersas.
+Esta representación consume memoria O(V + E), donde V es el número de vértices y E el número de aristas. Es ideal para redes dispersas.
 ```
 
-### Proceso de Recorrido BFS (Busqueda en Anchura) paso a paso
+### Proceso de Recorrido BFS (Búsqueda en Anchura) Paso a Paso
 
-BFS recorre la red nivel por nivel para encontrar el camino mas corto o los grados de separacion entre dos personas. Utiliza una cola FIFO interna.
+BFS recorre la red nivel por nivel para encontrar el camino más corto o los grados de separación entre dos entidades. Utiliza una cola FIFO interna.
 
 ```
 Buscando la distancia entre Alice y Charlie:
@@ -47,13 +47,13 @@ Paso 3: Desencolamos Bob. Miramos sus vecinos no visitados: Charlie.
 Charlie es nuestro destino. Hemos encontrado que la distancia es 2 saltos.
 ```
 
-## Cuando usar un Grafo en Ciencia de Datos
+## Cuándo Usar un Grafo en Ingeniería de Ciencia de Datos
 
-1. Redes sociales y sistemas de recomendacion: Para modelar conexiones entre usuarios y productos (filtrado colaborativo basado en grafos).
+1. Redes sociales y sistemas de recomendación: Para modelar conexiones entre usuarios y productos (filtrado colaborativo basado en grafos).
 
-2. Deteccion de fraudes financieros: Para analizar ciclos de transferencias y flujo de dinero entre cuentas bancarias.
+2. Detección de fraudes financieros: Para analizar ciclos de transferencias y flujo de dinero entre cuentas bancarias.
 
-3. Redes de transporte y mapas: Para calcular rutas mas cortas o eficientes en logistica.
+3. Redes de transporte y mapas: Para calcular rutas más cortas o eficientes en logística.
 
 ## Ejemplo en C#
 
@@ -115,7 +115,7 @@ public class EjemploGrafos
         red.AgregarConexion("Charlie", "David");
 
         int saltos = red.ContarSaltos("Alice", "David");
-        Console.WriteLine("Grados de separacion entre Alice y David: " + saltos + " saltos");
+        Console.WriteLine("Grados de separación entre Alice y David: " + saltos + " saltos");
     }
 }
 ```

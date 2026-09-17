@@ -1,44 +1,44 @@
 # Ejercicios de Listas y Arrays
 
-En este primer bloque de ejercicios trabajaremos con estructuras lineales basicas: Arrays Estaticos (T[]), Listas Dinamicas (List<T>) y Listas Doblemente Enlazadas (LinkedList<T>).
+En este primer bloque de ejercicios para Ingeniería de Ciencia de Datos trabajarás con estructuras lineales básicas: Arrays Estáticos (T[]), Listas Dinámicas (List<T>) y Listas Doblemente Enlazadas (LinkedList<T>).
 
-Tu objetivo como estudiante de Ciencia de Datos es analizar el problema, decidir cual de las tres variaciones de listas utilizar y justificar formalmente tu respuesta.
+Tu objetivo como estudiante de ingeniería es analizar el problema, decidir cuál de las tres variaciones de listas utilizar y justificar formalmente tu decisión.
 
-## Caso 1: Monitoreo de Salinidad en la Cienaga Grande de Santa Marta
+## Caso 1: Monitoreo de Salinidad en la Ciénaga Grande de Santa Marta
 
-Un equipo de investigadores ambientales ha desplegado sensores en la Cienaga Grande para registrar niveles de salinidad cada hora.
+Un equipo de ingenieros ambientales ha desplegado sensores en la Ciénaga Grande para registrar niveles de salinidad cada hora.
 
-Se presentan dos necesidades tecnicas distintas:
+Se presentan dos necesidades técnicas distintas:
 
 ### Escenario A: Registro de Muestras de Tamaño Conocido
-El equipo realiza una jornada de campo de exactamente 24 horas y conoce de antemano que recolectara exactamente 24 lecturas de temperatura. Necesitamos la estructura mas ligera posible en memoria RAM y con el acceso mas rapido por indice.
+El equipo realiza una jornada de campo de exactamente 24 horas y conoce de antemano que recolectará exactamente 24 lecturas. Necesitamos la estructura más ligera posible en memoria RAM y con el acceso más rápido por índice.
 
-### Escenario B: Ventana Deslizante de Ultimas Muestras
-En la estacion central se recibe un flujo continuo e indeterminado de lecturas. Queremos mantener una ventana deslizante de exactamente las ultimas 5 muestras recibidas. Cada vez que llega una nueva muestra, se agrega al final y se elimina la mas antigua del frente.
+### Escenario B: Ventana Deslizante de Últimas Muestras
+En la estación central se recibe un flujo continuo e indeterminado de lecturas. Queremos mantener una ventana deslizante de exactamente las últimas 5 muestras recibidas. Cada vez que llega una nueva muestra, se agrega al final y se elimina la más antigua del frente.
 
 ```
-Proceso de ventana deslizante con 3 elementos maximo:
+Proceso de ventana deslizante con 3 elementos máximo:
 
 Estado Inicial:     [ 12.5 ] <---> [ 14.1 ] <---> [ 15.0 ]
 
 Llega nuevo dato (18.2):
-Paso 1: Agregar al final -> [ 12.5 ] <---> [ 14.1 ] <---> [ 15.0 ] <---> [ 18.2 ]
-Paso 2: Eliminar el primero -> [ 14.1 ] <---> [ 15.0 ] <---> [ 18.2 ]
+Paso 1: Agregar al final  -> [ 12.5 ] <---> [ 14.1 ] <---> [ 15.0 ] <---> [ 18.2 ]
+Paso 2: Eliminar primero  -> [ 14.1 ] <---> [ 15.0 ] <---> [ 18.2 ]
 ```
 
-## Preguntas de Racionalizacion
+## Preguntas de Racionalización
 
-1. Para el Escenario A, ¿por que es preferible utilizar un Array Estatico (double[]) en lugar de una List<double>? Explica que ocurre en la memoria cache del procesador.
+1. Para el Escenario A, ¿por qué es preferible utilizar un Array Estático (double[]) en lugar de una List<double>? Explica qué ocurre en la memoria caché del procesador.
 
-2. Para el Escenario B, ¿por que utilizar una List<double> para eliminar el primer elemento (indice 0) requiere tiempo O(n), mientras que con una LinkedList<double> se realiza en tiempo O(1)?
+2. Para el Escenario B, ¿por qué utilizar una List<double> para eliminar el primer elemento (índice 0) requiere tiempo O(n), mientras que con una LinkedList<double> se realiza en tiempo O(1)?
 
-3. Si en lugar de 5 muestras tuvieras que acumular un archivo CSV de 500,000 filas usando una List<double>, ¿por que es importante pasar la capacidad inicial en el constructor new List<double>(500000)? Dibuja en ASCII que ocurre cuando la lista redimensiona su array interno.
+3. Si en lugar de 5 muestras tuvieras que acumular un archivo CSV de 500,000 filas usando una List<double>, ¿por qué es importante indicar la capacidad inicial en el constructor new List<double>(500000)? Explica qué ocurre cuando la lista redimensiona su array interno.
 
 ```
-Diagrama ASCII a completar: Redimensionamiento interno de List<T>
+Esquema ASCII a analizar: Redimensionamiento interno de List<T>
 
 Capacidad 2 llena:   [ dato1 ] [ dato2 ]
-Agregar dato3:      [ ? ] [ ? ] [ ? ] [ ? ]  <-- Explica que sucede aqui
+Agregar dato3:      [ dato1 ] [ dato2 ] [ dato3 ] [       ]  (Nueva capacidad: 4)
 ```
 
 ## Plantilla C# a Completar
@@ -52,12 +52,12 @@ public class SolucionListas
     static void Main()
     {
         // 1. Escenario A: Implementar con la estructura de tamaño fijo elegida
-        // JUSTIFICACION: Se elige __________ porque...
+        // JUSTIFICACIÓN: Se elige double[] porque la capacidad es conocida...
         double[] muestras24Horas = new double[24];
         muestras24Horas[0] = 15.4;
 
         // 2. Escenario B: Implementar la ventana deslizante con la estructura elegida
-        // JUSTIFICACION: Se elige __________ porque eliminar al inicio toma O(1)...
+        // JUSTIFICACIÓN: Se elige LinkedList<double> porque eliminar al inicio toma O(1)...
         LinkedList<double> ventana = new LinkedList<double>();
         double[] datosNuevos = new double[] { 10.1, 12.3, 14.5, 16.7, 18.9, 20.2 };
 

@@ -1,6 +1,6 @@
 # Caso Integrador y Ejercicios de Rendimiento y Pruebas
 
-En este ultimo bloque de la materia integraremos multiples estructuras de datos en un sistema complejo, realizaremos pruebas de rendimiento empirico (benchmarking) y escribiremos pruebas unitarias para certificar que las invariantes no se violan bajo carga.
+En este último bloque de la materia para Ingeniería de Ciencia de Datos integrarás múltiples estructuras de datos en un sistema complejo, realizarás pruebas de rendimiento empírico (benchmarking) y escribirás pruebas unitarias para certificar que las invariantes se cumplen bajo carga.
 
 ## Caso Integrador Final: Rediseño del Pipeline de Datos de MagdalenaExpress
 
@@ -11,10 +11,10 @@ El sistema debe coordinar cuatro componentes integrados:
 ```
 Pipeline de procesamiento completo:
 
-1. [ Escaneo e Ingestion ] ---> HashSet<string> para deduplicar placas/codigos en O(1)
+1. [ Escaneo e Ingestión ] ---> HashSet<string> para deduplicar placas/códigos en O(1)
 2. [ Buffer de Despacho ]  ---> Queue<string> para mantener orden FIFO de carga
-3. [ Envíos de Urgencia ]  ---> PriorityQueue<string, int> para despachos de emergencia medica
-4. [ Auditoria & Undo ]    ---> Stack<string> para revertir errores de digitacion
+3. [ Envíos de Urgencia ]  ---> PriorityQueue<string, int> para despachos de emergencia médica
+4. [ Auditoría & Undo ]    ---> Stack<string> para revertir errores de digitación
 ```
 
 ## Parte 1: Benchmarking de Memoria y Tiempo
@@ -24,26 +24,26 @@ El equipo de infraestructura duda si vale la pena especificar la capacidad inici
 - Experimento 2: Llenar 5,000,000 de registros en una List<double>(5000000) con capacidad preallocada.
 
 ```
-Medicion de Benchmark:
+Medición de Benchmark:
 
-[ Limpieza Inicial GC.Collect() ] ---> Medir RAM 1 ---> Cronometro Start
+[ Limpieza Inicial GC.Collect() ] ---> Medir RAM 1 ---> Cronómetro Start
                                                               │
                                                         Llenar Lista
                                                               │
-[ Resultado: RAM 2 - RAM 1 | Tiempo ms ] <--- Medir RAM 2 <--- Cronometro Stop
+[ Resultado: RAM 2 - RAM 1 | Tiempo ms ] <--- Medir RAM 2 <--- Cronómetro Stop
 ```
 
 ## Parte 2: Suite de Pruebas Unitarias para Validar Invariantes
 
-Debes implementar dos pruebas unitarias automaticas:
+Debes implementar dos pruebas unitarias automáticas:
 1. Prueba de Invariante FIFO: Garantizar que al encolar "A" y luego "B", Dequeue() retorne estrictamente "A".
 2. Prueba de Invariante HashSet: Garantizar que al intentar agregar dos veces el mismo elemento "COD-1", HashSet.Add() retorne false en la segunda llamada y la cuenta de elementos permanezca en 1.
 
-## Preguntas de Racionalizacion Finales
+## Preguntas de Racionalización Finales
 
-1. Analiza los resultados del benchmark de capacidad preallocada. ¿Por que preasignar la capacidad desde el inicio ahorra tiempo de CPU y reduce el trabajo del Garbage Collector (GC)?
+1. Analiza los resultados del benchmark de capacidad preallocada. ¿Por qué preasignar la capacidad desde el inicio ahorra tiempo de CPU y reduce el trabajo del Garbage Collector (GC)?
 
-2. ¿Por que la suite de pruebas unitarias es fundamental en la produccion de software de ciencia de datos antes de desplegar un algoritmo a un entorno real?
+2. ¿Por qué la suite de pruebas unitarias es fundamental en la producción de software de ingeniería de ciencia de datos antes de desplegar un algoritmo a un entorno real?
 
 ## Plantilla C# Completa a Ejecutar
 
@@ -66,7 +66,7 @@ public class CasoIntegradorYRendimiento
         string retornado = colaPrueba.Dequeue();
 
         if (retornado != "Paquete_A")
-            throw new Exception("FALLO: La cola violo el invariante FIFO.");
+            throw new Exception("FALLO: La cola violó el invariante FIFO.");
         Console.WriteLine("[PASS] Invariante FIFO en Queue verificado.");
 
         // Test HashSet
@@ -75,8 +75,8 @@ public class CasoIntegradorYRendimiento
         bool duplicadoAceptado = setPrueba.Add("COD-1");
 
         if (duplicadoAceptado || setPrueba.Count != 1)
-            throw new Exception("FALLO: HashSet acepto un elemento duplicado.");
-        Console.WriteLine("[PASS] Invariante de Deduplicacion en HashSet verificado.");
+            throw new Exception("FALLO: HashSet aceptó un elemento duplicado.");
+        Console.WriteLine("[PASS] Invariante de Deduplicación en HashSet verificado.");
     }
 
     // 2. Experimento de Benchmark

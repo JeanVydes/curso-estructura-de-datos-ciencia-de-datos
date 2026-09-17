@@ -1,27 +1,29 @@
-## Conceptos Claves
+## Conceptos Clave
 
-A la hora de adentrarnos en las estructuras de datos, nos encontramos con muchos terminos con los que coloquialmente no estamos acostumbrados, y antes de entrar de lleno al mundo de las estructuras de datos, debemos conocer algunos terminos clave que nos ayudaran en nuestro proceso.
+A la hora de adentrarte en las estructuras de datos como estudiante de ingeniería de ciencia de datos, te encontrarás con términos a los que de pronto no estás acostumbrado cotidianamente. Antes de entrar de lleno al mundo de las estructuras, debemos dominar algunos conceptos fundamentales que te guiarán a lo largo de todo tu aprendizaje.
 
 ### ¿FIFO y LIFO?
 
-Algunas estructuras de datos tienen ciertos comportamientos que limitan a como accedemos a ciertos datos, FIFO (First In, First Out) hacen referencia a las estructuras que limitan a acceder a un dato dependiendo de cuando entro, y como su nombre lo indica, el primer elemento que ingreso DEBE ser el primer elemento en salir. Una alegoria seria hacer fila para una cafe, si yo llego primero, deberian atenderme primero. En ciencia de datos esto se utiliza cuando recibimos un flujo constante de datos en tiempo real (streaming) o en colas de tareas batch donde debemos procesar las cosas exactamente en el orden en que llegaron.
+Algunas estructuras de datos tienen comportamientos específicos que definen y limitan cómo accedemos a la información. 
 
-Por otra parte tenemos las estructuras LIFO (Last In, First Out). En este punto la mas conocida seria la pila, una estructura de datos donde el ultimo elemento en entrar debe ser el primero en salir; En la vida real estamos familiarizados con esto, un ejemplo basico seria cuando vamos a lavar platos, los platos primeros se acumulan, en una pila, y cuando ya queremos lavarlos, el primero que agarramos es el de mas arriba, a pesar de que fue el ultimo en ponerse. En ciencia de datos esto se usa cuando queremos mantener un historial de acciones que nos permita deshacer la ultima modificacion realizada sobre un dataset o analizar expresiones sintacticas.
+FIFO (First In, First Out) hace referencia a las estructuras donde el primer elemento en ingresar debe ser estrictamente el primer elemento en salir. Una analogía cotidiana es hacer fila en la cafetería de la universidad: si tú llegas primero, a ti deben atenderte primero. En la ingeniería de datos, esto se utiliza cuando recibes un flujo continuo de datos en tiempo real (streaming) o en colas de procesamiento por lotes donde debes respetar el orden de llegada.
+
+Por otra parte, tenemos las estructuras LIFO (Last In, First Out). La más conocida es la pila, una estructura donde el último elemento en entrar es el primero en salir. Un ejemplo de la vida real es cuando vas a lavar platos: los platos sucios se acumulan en una pila, y cuando empiezas a lavar, el primero que tomas es el de arriba, a pesar de que fue el último que pusiste. En la ingeniería de datos, esto se usa para mantener un historial de acciones que permita deshacer la última modificación realizada sobre un conjunto de datos o para evaluar expresiones sintácticas.
 
 ### Invariantes
 
-Como el nombre lo indica, es algo que no varia, en el contexto de las estructuras de datos esto se refiere a reglas strictly estrictas que cada familia o estructura deben seguir. No son negociables, y su violacion tiene como consecuencia que no sea lo estandar y provoque problemas inesperados.
+Como su nombre lo indica, un invariante es una regla que no varía. En el contexto de las estructuras de datos, se refiere a reglas estrictas que cada familia de estructuras debe cumplir en todo momento. No son negociables, y su violación provoca que la estructura deje de funcionar correctamente y genere errores inesperados.
 
-Las colas son un ejemplo perfecto, una cola es una estructura de datos FIFO. Es decir, sus invariantes son que siempre se debe sacar el primer elemento que entro, violar en este caso esta restriccion, haria que la cola dejara de ser una cola.
+Las colas son un ejemplo perfecto: una cola es una estructura FIFO. Su invariante es que siempre se debe retirar el elemento más antiguo. Violar esta restricción haría que la cola deje de ser una cola.
 
-### TDA
+### TDA (Tipo Abstracto de Datos)
 
-Un tipo abstracto de datos es un modelo matematico o conceptual que define un conjunto de valores y operaciones que se pueden aplicar sobre ellos. Independientemente de como se implemente, es basicamente un contrato que te dice como se deben hacer las cosas.
+Un Tipo Abstracto de Datos es un modelo matemático y conceptual que define un conjunto de valores y las operaciones que se pueden aplicar sobre ellos. Independientemente de cómo se implemente en el código, es básicamente un contrato que te dice qué acciones se pueden realizar.
 
-Cada estructura de datos es un TDA, ya que forman grupos de datos que tienen ciertas acciones, como insertar, eliminar, peek, etc. Cada TDA tiene una manera diferente de hacer cada una de ellas, y como operan.
+Cada estructura de datos es un TDA, ya que define un grupo de datos con acciones específicas como insertar, eliminar o consultar el elemento superior. Cada TDA tiene una forma distinta de operar.
 
 ### Acciones Primitivas y Acciones Derivadas
 
-Las acciones primitivas de un TDA definen sus operaciones mas comunes y minimo requeridas para funcionar, entre estas podemos encontrar: insertar, eliminar, peek entre otros.
+Las acciones primitivas de un TDA definen sus operaciones mínimas e indispensables para funcionar, entre las cuales encontramos insertar, eliminar y consultar (peek).
 
-Pero tambien tenemos acciones derivadas, que surgen a raiz de metodos de ayuda BASADOS en acciones primitivas, pero que no son necesarios para que la estructura funcione. Como contar elementos o imprimirlos en pantalla.
+Las acciones derivadas son operaciones auxiliares construidas a partir de las acciones primitivas. No son estrictamente necesarias para que la estructura exista conceptualmente, pero ayudan en el trabajo diario, como contar el total de elementos o imprimirlos en pantalla.

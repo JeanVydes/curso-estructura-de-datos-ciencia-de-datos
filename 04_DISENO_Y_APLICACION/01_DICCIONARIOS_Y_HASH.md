@@ -1,33 +1,33 @@
 # Diccionarios y Tablas Hash
 
-Las tablas hash son estructuras de datos diseñadas para ofrecer busquedas, inserciones y eliminaciones en tiempo promedio constante O(1). En C#, se implementan mediante dos clases principales en System.Collections.Generic: Dictionary<TKey, TValue> y HashSet<T>.
+Las tablas hash son estructuras de datos diseñadas para ofrecer búsquedas, inserciones y eliminaciones en tiempo promedio constante O(1). En C#, se implementan mediante dos clases principales en System.Collections.Generic: Dictionary<TKey, TValue> y HashSet<T>.
 
-Su objetivo principal es permitirnos acceder a un elemento directamente mediante una clave sin tener que recorrer toda la coleccion.
+Su objetivo principal es permitirte acceder a un elemento directamente mediante una clave sin tener que recorrer toda la colección.
 
-## Como funciona el Hash paso a paso
+## Cómo Funciona el Hash Paso a Paso
 
-Una tabla hash utiliza una funcion hash (GetHashCode()) que transforma una clave (como un texto o identificador) en un indice numerico de un arreglo interno.
+Una tabla hash utiliza una función hash (GetHashCode()) que transforma una clave (como un texto o identificador) en un índice numérico de un arreglo interno.
 
 ```
-Proceso de guardado y busqueda en tiempo O(1):
+Proceso de guardado y búsqueda en tiempo O(1):
 
 Paso 1: Queremos guardar la temperatura de "SensorA" = 24.5
 
-  Clave: "SensorA" ---> [ Funcion Hash ] ---> Genera Indice: 3
+  Clave: "SensorA" ---> [ Función Hash ] ---> Genera Índice: 3
 
 Paso 2: El sistema guarda el valor directamente en la casilla 3 del arreglo interno.
 
-  Indice 0: [     ]
-  Indice 1: [     ]
-  Indice 2: [     ]
-  Indice 3: [ "SensorA" : 24.5 ]  <--- Guardado en 1 solo paso
+  Índice 0: [     ]
+  Índice 1: [     ]
+  Índice 2: [     ]
+  Índice 3: [ "SensorA" : 24.5 ]  <--- Guardado en 1 solo paso
 
-Paso 3: Cuando consultamos "SensorA", la funcion hash recalcula el Indice 3 y salta directamente a esa posicion de memoria en tiempo O(1).
+Paso 3: Cuando consultamos "SensorA", la función hash recalcula el Índice 3 y salta directamente a esa posición de memoria en tiempo O(1).
 ```
 
 ### Proceso de un Hash Join O(N + M) entre dos tablas
 
-En ciencia de datos, cuando queremos unir dos listas de registros por una llave comun (como un UserID), realizar un Hash Join evita el costo cuadratico O(N * M) de usar dos bucles anidados.
+En ingeniería de ciencia de datos, cuando quieres unir dos listas de registros por una clave común (como un UserID), realizar un Hash Join evita el costo cuadrático O(N * M) de usar dos bucles anidados.
 
 ```
 Tabla Usuarios (N = 2):              Tabla Ventas (M = 3):
@@ -46,13 +46,13 @@ Venta 3: UsuarioID 102 -> Encuentra "Carlos" en O(1)
 Tiempo total: O(N + M). Si N y M valen 100,000, pasa de 10,000,000,000 operaciones a solo 200,000 operaciones.
 ```
 
-## Cuando usar Diccionarios y HashSet en Ciencia de Datos
+## Cuándo Usar Diccionarios y HashSet en Ingeniería de Ciencia de Datos
 
-1. Deduplicacion rapida con HashSet<T>: Para filtrar registros o identificadores repetidos en O(1).
+1. Deduplicación rápida con HashSet<T>: Para filtrar registros o identificadores repetidos en O(1).
 
-2. Tablas de frecuencia e histogramas: Para contar cuantas veces aparece cada palabra o categoria en un dataset.
+2. Tablas de frecuencia e histogramas: Para contar cuántas veces aparece cada palabra o categoría en un dataset.
 
-3. Hash Joins e indexacion en memoria: Para relacionar dos datasets mediante una clave sin penalizar el tiempo de ejecucion.
+3. Hash Joins e indexación en memoria: Para relacionar dos datasets mediante una clave sin penalizar el tiempo de ejecución.
 
 ## Ejemplo en C#
 
@@ -71,7 +71,7 @@ public class EjemploHash
         bool agregadoDeNuevo = usuariosUnicos.Add("USR_100"); // Retorna false en O(1)
 
         Console.WriteLine("¿Se pudo agregar el duplicado USR_100?: " + agregadoDeNuevo);
-        Console.WriteLine("Total usuarios unicos: " + usuariosUnicos.Count);
+        Console.WriteLine("Total usuarios únicos: " + usuariosUnicos.Count);
 
         // Dictionary para contar frecuencias de palabras
         string texto = "datos ciencia datos algoritmo datos ciencia";
