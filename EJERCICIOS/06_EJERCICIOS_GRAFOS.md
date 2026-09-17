@@ -1,17 +1,17 @@
 # Ejercicios de Grafos y Redes
 
-En este sexto bloque trabajaremos con estructuras no lineales orientadas al modelado de redes y relaciones complejas entre entidades.
+En este sexto bloque para Ingeniería de Ciencia de Datos trabajarás con estructuras no lineales orientadas al modelado de redes y relaciones complejas entre entidades.
 
-## Caso 6: Red de Conectividad VIAL y Logistica en el Departamento del Magdalena
+## Caso 6: Red de Conectividad Vial y Logística en el Departamento del Magdalena
 
-El Departamento de Planeacion del Magdalena necesita modelar la red de municipios interconectados por carreteras principales para optimizar la distribucion de insumos agricolas.
+El Departamento de Planeación del Magdalena necesita modelar la red de municipios interconectados por carreteras principales para optimizar la distribución de insumos agrícolas.
 
 La red de municipios y carreteras bidireccionales es la siguiente:
 
 ```
 Red de carreteras del Magdalena:
 
-[ Santa Marta ] <-------> [ Cienaga ] <-------> [ Fundacion ]
+[ Santa Marta ] <-------> [ Ciénaga ] <-------> [ Fundación ]
        |                                              |
        v                                              v
   [ Aracataca ] <--------------------------------> [ Plato ]
@@ -19,26 +19,26 @@ Red de carreteras del Magdalena:
 
 Se requiere responder a dos consultas fundamentales:
 1. Almacenar la red en memoria consumiendo la menor cantidad posible de RAM.
-2. Calcular el numero MINIMO de municipios intermedios (saltos) para transportar carga desde Santa Marta hasta Plato.
+2. Calcular el número MÍNIMO de municipios intermedios (saltos) para transportar carga desde Santa Marta hasta Plato.
 
-## Preguntas de Racionalizacion
+## Preguntas de Racionalización
 
-1. Compara las dos formas de representar un grafo en memoria (Matriz de Adyacencia vs Lista de Adyacencia). ¿Por que una Lista de Adyacencia (Dictionary<string, List<string>>) es la opcion correcta para esta red vial dispersa?
+1. Compara las dos formas de representar un grafo en memoria (Matriz de Adyacencia vs Lista de Adyacencia). ¿Por qué una Lista de Adyacencia (Dictionary<string, List<string>>) es la opción correcta para esta red vial dispersa?
 
-2. Para encontrar la ruta con la MENOR cantidad de paradas entre dos municipios, ¿debes utilizar el algoritmo de recorrido BFS (Busqueda en Anchura) o DFS (Busqueda en Profundidad)? Explica como explora los nodos cada algoritmo.
+2. Para encontrar la ruta con la MENOR cantidad de paradas entre dos municipios, ¿debes utilizar el algoritmo de recorrido BFS (Búsqueda en Anchura) o DFS (Búsqueda en Profundidad)? Explica cómo explora los nodos cada algoritmo.
 
-3. Dibuja el diagrama ASCII del recorrido BFS desde Santa Marta buscando llegar a Plato, indicando como evoluciona la cola FIFO de nodos pendientes y el conjunto de visitados.
+3. Observa la evolución del algoritmo BFS desde Santa Marta buscando llegar a Plato, indicando cómo evoluciona la cola FIFO de nodos pendientes y el conjunto de visitados.
 
 ```
-Diagrama ASCII a completar del algoritmo BFS:
+Esquema ASCII del algoritmo BFS:
 
 Paso 1 (Inicio):
 Cola: [ Santa Marta ]
 Visitados: { Santa Marta }
 
 Paso 2 (Desencola Santa Marta):
-Nuevos vecinos agregados a la cola: [ ? , ? ]
-Visitados: { Santa Marta, ? , ? }
+Nuevos vecinos agregados a la cola: [ Ciénaga, Aracataca ]
+Visitados: { Santa Marta, Ciénaga, Aracataca }
 ```
 
 ## Plantilla C# a Completar
@@ -60,7 +60,7 @@ public class SolucionGrafos
         adyacencia[m2].Add(m1);
     }
 
-    // JUSTIFICACION: Se usa BFS con una Queue<T> auxiliar para garantizar encontrar la ruta con menor cantidad de saltos
+    // JUSTIFICACIÓN: Se usa BFS con una Queue<T> auxiliar para garantizar encontrar la ruta con menor cantidad de saltos
     public int CalcularMinimoSaltos(string origen, string destino)
     {
         if (!adyacencia.ContainsKey(origen) || !adyacencia.ContainsKey(destino)) return -1;
@@ -94,14 +94,14 @@ public class SolucionGrafos
     static void Main()
     {
         SolucionGrafos redVial = new SolucionGrafos();
-        redVial.AgregarCarretera("Santa Marta", "Cienaga");
-        redVial.AgregarCarretera("Cienaga", "Fundacion");
+        redVial.AgregarCarretera("Santa Marta", "Ciénaga");
+        redVial.AgregarCarretera("Ciénaga", "Fundación");
         redVial.AgregarCarretera("Santa Marta", "Aracataca");
-        redVial.AgregarCarretera("Fundacion", "Plato");
+        redVial.AgregarCarretera("Fundación", "Plato");
         redVial.AgregarCarretera("Aracataca", "Plato");
 
         int saltos = redVial.CalcularMinimoSaltos("Santa Marta", "Plato");
-        Console.WriteLine("Minimo de saltos entre Santa Marta y Plato: " + saltos);
+        Console.WriteLine("Mínimo de saltos entre Santa Marta y Plato: " + saltos);
     }
 }
 ```

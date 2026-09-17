@@ -1,14 +1,14 @@
 # Pilas (Stack<T>)
 
-La pila es una estructura de datos lineal que sigue el principio LIFO (Last In, First Out). Esto significa que el ultimo elemento en ingresar es estrictamente el primero en salir.
+La pila es una estructura de datos lineal que sigue el principio LIFO (Last In, First Out). Esto significa que el último elemento en ingresar es estrictamente el primero en salir.
 
-Como vimos en los conceptos generales, la analogia mas clara es la de una pila de platos: el ultimo plato que colocamos arriba es el primero que tomamos para lavar.
+Como vimos en los conceptos generales, la analogía más clara es la de una pila de platos: el último plato que colocas arriba es el primero que tomas para lavar.
 
-## Como funciona internamente una Pila
+## Cómo Funciona Internamente una Pila
 
-Una pila restringe el acceso a un unico punto llamado tope (top). No podemos modificar ni retirar elementos que esten debajo del tope sin retirar primero los que se encuentran encima.
+Una pila restringe el acceso a un único punto llamado tope (top). No puedes modificar ni retirar elementos que estén debajo del tope sin retirar primero los que se encuentran encima.
 
-### Operacion Push (Insertar)
+### Operación Push (Insertar)
 
 ```
 Estado inicial de la pila con 2 elementos:
@@ -28,7 +28,7 @@ Ejecutamos Push(Dato C):
 El nuevo elemento pasa a ser el tope de la pila en tiempo O(1).
 ```
 
-### Operacion Pop (Extraer)
+### Operación Pop (Extraer)
 
 ```
 Estado inicial con 3 elementos:
@@ -49,13 +49,13 @@ Retorna Dato C y la pila queda:
 Extraer el elemento del tope se realiza en tiempo O(1).
 ```
 
-## Cuando usar una Pila en Ciencia de Datos
+## Cuándo Usar una Pila en Ingeniería de Ciencia de Datos
 
-Elegimos una pila cuando el problema requiere revertir un flujo de eventos o inspeccionar hacia atras la ultima accion realizada:
+Elegirás una pila cuando el problema requiera revertir un flujo de eventos o inspeccionar hacia atrás la última acción realizada:
 
-1. Historial de modificaciones en datos: Si construimos una herramienta para la limpieza interactiva de datasets y el usuario aplica filtros o imputaciones, usamos una pila para permitir deshacer (undo) la ultima transformacion efectuada.
+1. Historial de modificaciones en datos: Si construyes una herramienta para la limpieza interactiva de datasets y el usuario aplica filtros o imputaciones, usas una pila para permitir deshacer (undo) la última transformación efectuada.
 
-2. Verificacion de balanceo de parentesis o parsing de expresiones: Al evaluar formulas matematicas o validar esquemas sintacticos (como archivos JSON o queries SQL), usamos una pila para verificar que cada parentesis que abre tenga su correspondiente parentesis de cierre en el orden correcto.
+2. Verificación de balanceo de paréntesis o parsing de expresiones: Al evaluar fórmulas matemáticas o validar esquemas sintácticos (como archivos JSON o consultas SQL), usas una pila para verificar que cada paréntesis que abre tenga su correspondiente paréntesis de cierre en el orden correcto.
 
 ## Ejemplo en C#
 
@@ -94,12 +94,12 @@ public class EjemploPila
 
     static void Main()
     {
-        // Validacion de formulas matematicas
+        // Validación de fórmulas matemáticas
         string formulaCorrecta = "SUM(A1:A10) * [10 + (2 - 1)]";
         string formulaIncorrecta = "AVG(A1:A10) * [10 + 2 - 1)]";
 
-        Console.WriteLine("Formula 1 es valida: " + ValidarParentesis(formulaCorrecta));
-        Console.WriteLine("Formula 2 es valida: " + ValidarParentesis(formulaIncorrecta));
+        Console.WriteLine("Fórmula 1 es válida: " + ValidarParentesis(formulaCorrecta));
+        Console.WriteLine("Fórmula 2 es válida: " + ValidarParentesis(formulaIncorrecta));
 
         // Ejemplo de historial de deshacer (Undo)
         Stack<string> historialAcciones = new Stack<string>();
@@ -107,12 +107,12 @@ public class EjemploPila
         historialAcciones.Push("Eliminar filas con nulos");
         historialAcciones.Push("Normalizar columna Edad");
 
-        Console.WriteLine("\nUltima accion realizada: " + historialAcciones.Peek());
+        Console.WriteLine("\nÚltima acción realizada: " + historialAcciones.Peek());
 
         // El usuario presiona Deshacer
         string accionDeshecha = historialAcciones.Pop();
-        Console.WriteLine("Se deshizo la accion: " + accionDeshecha);
-        Console.WriteLine("Accion activa actual: " + historialAcciones.Peek());
+        Console.WriteLine("Se deshizo la acción: " + accionDeshecha);
+        Console.WriteLine("Acción activa actual: " + historialAcciones.Peek());
     }
 }
 ```

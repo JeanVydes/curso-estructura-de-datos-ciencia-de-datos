@@ -1,24 +1,24 @@
 # Heaps y Colas de Prioridad
 
-Un Heap (o Monticulo) es una estructura de datos basada en un arbol binario casi completo que satisface la propiedad del heap:
-En un Min-Heap, el valor de cada nodo padre es menor o igual que el de sus nodos hijos. Por lo tanto, el elemento mas pequeño de toda la estructura se encuentra siempre en la raiz.
+Un Heap (o Montículo) es una estructura de datos basada en un árbol binario casi completo que satisface la propiedad del heap:
+En un Min-Heap, el valor de cada nodo padre es menor o igual que el de sus nodos hijos. Por lo tanto, el elemento más pequeño de toda la estructura se encuentra siempre en la raíz.
 
 En C#, disponemos de la clase nativa PriorityQueue<TElement, TPriority> que implementa internamente un Min-Heap.
 
-## Como funciona un Min-Heap internamente
+## Cómo Funciona un Min-Heap Internamente
 
-Veamos como funciona la propiedad del heap y que sucede cuando insertamos y extraemos elementos:
+Veamos cómo funciona la propiedad del heap y qué sucede cuando insertamos y extraemos elementos:
 
 ```
 Estado inicial de un Min-Heap con prioridades 1, 3, 5:
 
-       ( 1 ) <-- Raiz (Siempre el elemento con menor valor/prioridad)
+       ( 1 ) <-- Raíz (Siempre el elemento con menor valor/prioridad)
       /     \
    ( 3 )   ( 5 )
 
 Insertamos un nuevo elemento con prioridad 2:
 
-Paso 1: Se coloca temporalmente al final del arbol.
+Paso 1: Se coloca temporalmente al final del árbol.
        ( 1 )
       /     \
    ( 3 )   ( 5 )
@@ -32,22 +32,22 @@ Paso 2: Como 2 < 3, viola la propiedad del Min-Heap con su padre (3). Intercambi
   /
 ( 3 )
 
-Ahora el arbol vuelve a cumplir la propiedad del heap en O(log n).
+Ahora el árbol vuelve a cumplir la propiedad del heap en O(log n).
 ```
 
 ### Proceso de Desencolar (Dequeue)
 
 ```
-Al llamar Dequeue(), extraemos la raiz (1), que es el elemento prioritario.
-El ultimo elemento del arbol (3) pasa a la raiz y se reacomoda hacia abajo (Heapify Down) comparando con sus hijos hasta recuperar la propiedad.
+Al llamar Dequeue(), extraemos la raíz (1), que es el elemento prioritario.
+El último elemento del árbol (3) pasa a la raíz y se reacomoda hacia abajo (Heapify Down) comparando con sus hijos hasta recuperar la propiedad.
 Este proceso toma tiempo O(log n).
 ```
 
-## Cuando usar un Heap en Ciencia de Datos
+## Cuándo Usar un Heap en Ingeniería de Ciencia de Datos
 
-1. Algoritmo de seleccion Top-K en datasets grandes: Si queremos encontrar los 5 productos mas vendidos entre 10 millones de registros, no necesitamos ordenar los 10 millones de elementos en O(n log n). Podemos mantener un Min-Heap de tamaño K = 5. A medida que recorremos el dataset, si el elemento nuevo es mayor que la raiz del heap, eliminamos la raiz y metemos el nuevo. Esto toma tiempo O(n log K) y usa una cantidad minima de memoria.
+1. Algoritmo de selección Top-K en datasets grandes: Si quieres encontrar los 5 productos más vendidos entre 10 millones de registros, no necesitas ordenar los 10 millones de elementos en O(n log n). Puedes mantener un Min-Heap de tamaño K = 5. A medida que recorres el dataset, si el elemento nuevo es mayor que la raíz del heap, eliminas la raíz y colocas el nuevo. Esto toma tiempo O(n log K) y usa una cantidad mínima de memoria.
 
-2. Atencion prioritaria de tareas o alertas: Cuando tenemos eventos de diferentes niveles de gravedad y las emergencias deben procesarse antes que los mensajes normales.
+2. Atención prioritaria de tareas o alertas: Cuando tienes eventos de diferentes niveles de gravedad y las emergencias deben procesarse antes que los mensajes normales.
 
 ## Ejemplo en C#
 
@@ -60,14 +60,14 @@ public class EjemploHeaps
     // Algoritmo Top-K usando PriorityQueue como Min-Heap
     static List<string> ObtenerTopK(List<(string Producto, double Venta)> ventas, int k)
     {
-        // El segundo parametro de PriorityQueue define la prioridad (en este caso el valor de venta)
+        // El segundo parámetro de PriorityQueue define la prioridad (en este caso el valor de venta)
         PriorityQueue<string, double> heapMinimo = new PriorityQueue<string, double>();
 
         foreach (var registro in ventas)
         {
             heapMinimo.Enqueue(registro.Producto, registro.Venta);
 
-            // Mantener el heap con tamaño maximo K
+            // Mantener el heap con tamaño máximo K
             if (heapMinimo.Count > k)
             {
                 heapMinimo.Dequeue(); // Elimina el elemento con menor venta

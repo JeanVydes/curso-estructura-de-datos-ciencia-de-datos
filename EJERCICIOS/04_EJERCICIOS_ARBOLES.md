@@ -1,41 +1,41 @@
-# Ejercicios de Arboles y Busqueda Jerarquica
+# Ejercicios de Árboles y Búsqueda Jerárquica
 
-En este cuarto bloque trabajaremos con estructuras no lineales jerarquicas, especificamente el Arbol Binario de Busqueda (BST), analizando como mantener el invariante de orden y lograr busquedas logaritmicas O(log n).
+En este cuarto bloque para Ingeniería de Ciencia de Datos trabajarás con estructuras no lineales jerárquicas, específicamente el Árbol Binario de Búsqueda (BST), analizando cómo mantener el invariante de orden y lograr búsquedas logarítmicas O(log n).
 
-## Caso 4: Indexacion de Especies Marinas en el Parque Nacional Natural Tayrona
+## Caso 4: Indexación de Especies Marinas en el Parque Nacional Natural Tayrona
 
-El centro de investigacion marina del Parque Tayrona clasifica avistamientos de especies mediante un codigo numerico de catalogo.
+El centro de investigación marina del Parque Tayrona clasifica avistamientos de especies mediante un código numérico de catálogo.
 
-Necesitamos almacenar 5,000 codigos de especies de forma que se puedan realizar busquedas inmediatas y, al mismo tiempo, imprimir el catalogo completo ordenado de menor a mayor sin necesidad de ordenar un arreglo desde cero.
+Necesitamos almacenar 5,000 códigos de especies de forma que se puedan realizar búsquedas inmediatas y, al mismo tiempo, imprimir el catálogo completo ordenado de menor a mayor sin necesidad de ordenar un arreglo desde cero.
 
 ```
-Estructura del Arbol BST de especies:
+Estructura del Árbol BST de especies:
 
-                  ( 500 ) <-- Raiz
+                  ( 500 ) <-- Raíz
                  /       \
             ( 300 )     ( 800 )
             /     \
        ( 200 )   ( 400 )
 ```
 
-## Preguntas de Racionalizacion
+## Preguntas de Racionalización
 
-1. ¿Cual es el invariante fundamental de un Arbol Binario de Busqueda (BST) respecto a los nodos a la izquierda y derecha de cualquier nodo N?
+1. ¿Cuál es el invariante fundamental de un Árbol Binario de Búsqueda (BST) respecto a los nodos a la izquierda y derecha de cualquier nodo N?
 
-2. Si insertamos los codigos en el siguiente orden: [500, 300, 800, 200, 400], dibuja paso a paso el diagrama ASCII del arbol resultante.
+2. Si insertamos los códigos en el siguiente orden: [500, 300, 800, 200, 400], observa el progreso paso a paso en el esquema ASCII.
 
 ```
-Diagrama ASCII a completar:
+Esquema ASCII de construcción:
 
 Paso 1 (500):       Paso 2 (300):       Paso 3 (800):
    (500)               (500)               (500)
                       /                   /     \
-                    ( ? )               ( ? )   ( ? )
+                    (300)               (300)   (800)
 ```
 
-3. Si por el contrario insertamos los codigos ya ordenados [100, 200, 300, 400, 500] en un BST simple sin autobalanceo, ¿en que estructura se degrada el arbol y cual seria el tiempo de busqueda de un elemento?
+3. Si por el contrario insertamos los códigos ya ordenados [100, 200, 300, 400, 500] en un BST simple sin autobalanceo, ¿en qué estructura se degrada el árbol y cuál sería el tiempo de búsqueda de un elemento?
 
-4. ¿Que tipo de recorrido de arbol (Pre-Order, In-Order o Post-Order) debes utilizar para imprimir todas las especies ordenadas numericamente?
+4. ¿Qué tipo de recorrido de árbol (Pre-Order, In-Order o Post-Order) debes utilizar para imprimir todas las especies ordenadas numéricamente?
 
 ## Plantilla C# a Completar
 
@@ -75,7 +75,7 @@ public class SolucionArboles
         return nodo;
     }
 
-    // JUSTIFICACION: Se usa recorrido In-Order para obtener la lista ordenada de menor a mayor
+    // JUSTIFICACIÓN: Se usa recorrido In-Order para obtener la lista ordenada de menor a mayor
     public void ImprimirOrdenado(NodoEspecie nodo)
     {
         if (nodo != null)
@@ -96,7 +96,7 @@ public class SolucionArboles
             catalogo.Insertar(c);
         }
 
-        Console.Write("Catalogo ordenado: ");
+        Console.Write("Catálogo ordenado: ");
         catalogo.ImprimirOrdenado(catalogo.raiz);
         Console.WriteLine();
     }

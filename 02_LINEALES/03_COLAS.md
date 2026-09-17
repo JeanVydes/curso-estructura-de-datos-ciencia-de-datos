@@ -2,13 +2,13 @@
 
 La cola es una estructura de datos lineal que responde a la regla FIFO (First In, First Out). Esto garantiza que el primer elemento en ingresar sea estrictamente el primer elemento en ser procesado y retirado.
 
-Como mencionamos en los conceptos generales, la analogia intuitiva es la fila para comprar un tique o un cafe: a la persona que llega primero se le atiende primero.
+Como mencionamos en los conceptos generales, la analogía intuitiva es la fila para comprar un tiquete o un café: a la persona que llega primero se le atiende primero.
 
-## Como funciona internamente una Cola
+## Cómo Funciona Internamente una Cola
 
 La cola restringe sus operaciones a dos extremos bien definidos: los elementos ingresan por la parte trasera (Rear) y se retiran por la parte delantera (Front).
 
-### Operacion Enqueue (Encolar)
+### Operación Enqueue (Encolar)
 
 ```
 Estado inicial de la cola con 2 elementos:
@@ -24,7 +24,7 @@ Front                             Rear
 El nuevo elemento se agrega al final de la cola en tiempo O(1).
 ```
 
-### Operacion Dequeue (Desencolar)
+### Operación Dequeue (Desencolar)
 
 ```
 Estado inicial con 3 elementos:
@@ -42,15 +42,15 @@ Front              Rear
 Retirar el elemento del frente se realiza en tiempo O(1).
 ```
 
-## Cuando usar una Cola en Ciencia de Datos
+## Cuándo Usar una Cola en Ingeniería de Ciencia de Datos
 
-Elegimos una cola cuando necesitamos procesar la informacion respetando estrictamente el orden secuencial de llegada:
+Elegirás una cola cuando necesites procesar la información respetando estrictamente el orden secuencial de llegada:
 
-1. Buffers de streaming en tiempo real: Cuando recibimos eventos continuos de sensores IoT o APIs y el sistema necesita acumularlos temporalmente para ir procesandolos a la velocidad disponible.
+1. Buffers de streaming en tiempo real: Cuando recibes eventos continuos de sensores IoT o APIs y el sistema necesita acumularlos temporalmente para ir procesándolos a la velocidad disponible.
 
-2. Planificacion de tareas en lote (Batch jobs): Para coordinar la ejecucion secuencial de scripts ETL (Extraccion, Transformacion y Carga).
+2. Planificación de tareas en lote (Batch jobs): Para coordinar la ejecución secuencial de scripts ETL (Extracción, Transformación y Carga).
 
-3. Recorridos por niveles en grafos o arboles (BFS): Para procesar redes y relaciones nivel por nivel.
+3. Recorridos por niveles en grafos o árboles (BFS): Para procesar redes y relaciones nivel por nivel.
 
 ## Ejemplo en C#
 

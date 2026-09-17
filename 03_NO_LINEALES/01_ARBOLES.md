@@ -1,20 +1,20 @@
-# Arboles y Busqueda Jerarquica
+# Árboles y Búsqueda Jerárquica
 
-A diferencia de las estructuras lineales como listas, pilas o colas, los arboles son estructuras de datos no lineales que organizan los elementos en forma de jerarquia.
+A diferencia de las estructuras lineales como listas, pilas o colas, los árboles son estructuras de datos no lineales que organizan los elementos en forma de jerarquía.
 
-Se componen de nodos conectados por ramas, donde existe un unico nodo principal llamado raiz y cada nodo puede tener nodos hijos.
+Se componen de nodos conectados por ramas, donde existe un único nodo principal llamado raíz y cada nodo puede tener nodos hijos.
 
-## Como funciona un Arbol Binario de Busqueda (BST)
+## Cómo Funciona un Árbol Binario de Búsqueda (BST)
 
-Un Arbol Binario de Busqueda impone una regla estricta conocida como el invariante de orden de un BST:
-Para cualquier nodo N del arbol, todos los valores en su subarbol izquierdo son estrictamente menores que N, y todos los valores en su subarbol derecho son estrictamente mayores que N.
+Un Árbol Binario de Búsqueda impone una regla estricta conocida como el invariante de orden de un BST:
+Para cualquier nodo N del árbol, todos los valores en su subárbol izquierdo son estrictamente menores que N, y todos los valores en su subárbol derecho son estrictamente mayores que N.
 
-### Insertar elementos paso a paso
+### Insertar Elementos Paso a Paso
 
-Veamos como se construye un BST al insertar los valores 50, 30 y 70 en ese orden:
+Veamos cómo se construye un BST al insertar los valores 50, 30 y 70 en ese orden:
 
 ```
-Paso 1: Insertar 50. Como el arbol esta vacio, 50 se convierte en la raiz.
+Paso 1: Insertar 50. Como el árbol está vacío, 50 se convierte en la raíz.
 
        ( 50 )
 
@@ -39,23 +39,23 @@ Paso 4: Insertar 40. Comparamos 40 < 50 (izquierda), luego 40 > 30 (derecha).
        ( 40 )
 ```
 
-### Proceso de Busqueda de un valor (ejemplo buscar 40)
+### Proceso de Búsqueda de un Valor (Ejemplo: Buscar 40)
 
 ```
-Paso 1: Comparamos 40 con la raiz (50). Como 40 < 50, descartamos todo el subarbol derecho (70) y vamos a la izquierda.
-Paso 2: Comparamos 40 con el nodo actual (30). Como 40 > 30, descartamos el subarbol izquierdo de 30 y vamos a la derecha.
+Paso 1: Comparamos 40 con la raíz (50). Como 40 < 50, descartamos todo el subárbol derecho (70) y vamos a la izquierda.
+Paso 2: Comparamos 40 con el nodo actual (30). Como 40 > 30, descartamos el subárbol izquierdo de 30 y vamos a la derecha.
 Paso 3: Llegamos al nodo (40). Como 40 == 40, hemos encontrado el elemento.
 
-En cada paso eliminamos la mitad de las opciones restantes. En un arbol balanceado esto nos da un tiempo de busqueda de O(log n).
+En cada paso eliminamos la mitad de las opciones restantes. En un árbol balanceado esto nos da un tiempo de búsqueda de O(log n).
 ```
 
-## Cuando usar un Arbol en Ciencia de Datos
+## Cuándo Usar un Árbol en Ingeniería de Ciencia de Datos
 
-1. Indexacion de busquedas rapidas: Las bases de datos relacionales utilizan estructuras basadas en arboles para permitir encontrar registros en tiempo logaritmico O(log n) sobre millones de filas.
+1. Indexación de búsquedas rápidas: Las bases de datos relacionales utilizan estructuras basadas en árboles para permitir encontrar registros en tiempo logarítmico O(log n) sobre millones de filas.
 
-2. Modelos de Machine Learning: Algoritmos como los Arboles de Decision dividen el espacio de caracteristicas mediante preguntas binarias en cada nodo.
+2. Modelos de Aprendizaje Automático: Algoritmos como los Árboles de Decisión dividen el espacio de características mediante preguntas binarias en cada nodo.
 
-3. Estructuras de taxonomias y jerarquias de categorias: Para representar categorias y subcategorias de productos o clasificaciones taxonomicas.
+3. Estructuras de taxonomías y jerarquías de categorías: Para representar categorías y subcategorías de productos o clasificaciones taxonómicas.
 
 ## Ejemplo en C#
 

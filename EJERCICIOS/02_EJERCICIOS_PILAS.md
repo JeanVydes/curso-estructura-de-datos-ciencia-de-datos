@@ -1,38 +1,38 @@
 # Ejercicios de Pilas (Stack<T>)
 
-En este segundo bloque trabajaremos con el comportamiento LIFO (Last In, First Out). Tu objetivo es reconocer situaciones donde el orden inverso de procesamiento es indispensable.
+En este segundo bloque para Ingeniería de Ciencia de Datos trabajarás con el comportamiento LIFO (Last In, First Out). Tu objetivo es reconocer situaciones donde el orden inverso de procesamiento es indispensable.
 
-## Caso 2: Sistema de Deshacer (Undo) en Encuestas Agricolas de la Zona Bananera
+## Caso 2: Sistema de Deshacer (Undo) en Encuestas Agrícolas de la Zona Bananera
 
-Un grupo de encuestadores registra informacion sobre el estado de los cultivos de banano en la Zona Bananera del Magdalena mediante una aplicacion movil.
+Un grupo de encuestadores registra información sobre el estado de los cultivos de banano en la Zona Bananera del Magdalena mediante una aplicación móvil.
 
-Durante la recoleccion de datos en campo, los encuestadores suelen cometer errores de ingreso y necesitan una funcion de Deshacer (Undo) que revierta siempre la ultima modificacion realizada.
+Durante la recolección de datos en campo, los encuestadores suelen cometer errores de digitación y necesitan una función de Deshacer (Undo) que revierta siempre la última modificación realizada.
 
 ```
 Historial de modificaciones sobre el registro de una finca:
 
-Paso 1: Se ingresa "Finca El Recreo: 50 hectareas"
-Paso 2: Se modifica a "Finca El Recreo: 55 hectareas"
-Paso 3: Se modifica a "Finca El Recreo: 60 hectareas" (Error de digitacion)
+Paso 1: Se ingresa "Finca El Recreo: 50 hectáreas"
+Paso 2: Se modifica a "Finca El Recreo: 55 hectáreas"
+Paso 3: Se modifica a "Finca El Recreo: 60 hectáreas" (Error de digitación)
 
-Al presionar el boton Deshacer:
-El sistema debe eliminar "60 hectareas" y restaurar "55 hectareas" en tiempo O(1).
+Al presionar el botón Deshacer:
+El sistema debe eliminar "60 hectáreas" y restaurar "55 hectáreas" en tiempo O(1).
 ```
 
-## Caso Adicional: Validacion Sintactica de Consultas de Filtro
+## Caso Adicional: Validación Sintáctica de Consultas de Filtro
 
-La aplicacion permite a los analistas escribir filtros mediante expresiones con parentesis y corchetes, como por ejemplo: `(Hectareas > 50 AND [Riego == "Goteo"])`.
+La aplicación permite a los analistas escribir filtros mediante expresiones con paréntesis y corchetes, por ejemplo: `(Hectareas > 50 AND [Riego == "Goteo"])`.
 
-Necesitamos un modulo que verifique si los parentesis y corchetes de la formula estan correctamente balanceados antes de ejecutar la consulta sobre la base de datos.
+Necesitamos un módulo que verifique si los paréntesis y corchetes de la fórmula están correctamente balanceados antes de ejecutar la consulta sobre la base de datos.
 
-## Preguntas de Racionalizacion
+## Preguntas de Racionalización
 
-1. Explica la propiedad LIFO de la clase Stack<T> en C# y por que es la estructura idonea para implementar el historial de deshacer frente a una lista convencional.
+1. Explica la propiedad LIFO de la clase Stack<T> en C# y por qué es la estructura idónea para implementar el historial de deshacer frente a una lista convencional.
 
-2. ¿Cual es la diferencia entre el metodo Pop() y el metodo Peek() en una pila? Dibuja un diagrama ASCII mostrando la pila antes y despues de ejecutar cada operacion.
+2. ¿Cuál es la diferencia entre el método Pop() y el método Peek() en una pila? Dibuja un esquema ASCII mostrando la pila antes y después de ejecutar cada operación.
 
 ```
-Diagrama ASCII a completar:
+Esquema ASCII:
 
 Pila Inicial:
 |  Cambio C  | <-- Tope
@@ -40,12 +40,14 @@ Pila Inicial:
 |  Cambio A  |
 +------------+
 
-Despues de Peek():                   Despues de Pop():
-|     ?      |                       |     ?      |
-+------------+                       +------------+
+Después de Peek():                  Después de Pop():
+|  Cambio C  | <-- Permanece        |  Cambio B  | <-- Nuevo Tope
+|  Cambio B  |                      |  Cambio A  |
+|  Cambio A  |                      +------------+
++------------+
 ```
 
-3. Al validar la sintaxis de parentesis, ¿que ocurre en la pila cuando encontramos un caracter de apertura '(' frente a uno de cierre ')'?
+3. Al validar la sintaxis de paréntesis, ¿qué ocurre en la pila cuando encuentras un carácter de apertura '(' frente a uno de cierre ')'?
 
 ## Plantilla C# a Completar
 
@@ -55,10 +57,9 @@ using System.Collections.Generic;
 
 public class SolucionPilas
 {
-    // Completar el algoritmo de validacion de parentesis usando Stack<char>
     static bool ValidarSintaxis(string formula)
     {
-        // JUSTIFICACION: Se usa Stack<char> porque los parentesis se deben cerrar en orden inverso...
+        // JUSTIFICACIÓN: Se usa Stack<char> porque los paréntesis se deben cerrar en orden inverso LIFO
         Stack<char> pila = new Stack<char>();
 
         foreach (char c in formula)
@@ -86,11 +87,11 @@ public class SolucionPilas
         historialUndo.Push("Ingreso 60 Ha");
 
         Console.WriteLine("Estado actual en tope: " + historialUndo.Peek());
-        historialUndo.Pop(); // Deshacer ultimo
-        Console.WriteLine("Estado despues de deshacer: " + historialUndo.Peek());
+        historialUndo.Pop(); // Deshacer último
+        Console.WriteLine("Estado después de deshacer: " + historialUndo.Peek());
 
         string consulta = "(Hectareas > 50 AND [Riego == 'Goteo'])";
-        Console.WriteLine("Consulta valida: " + ValidarSintaxis(consulta));
+        Console.WriteLine("Consulta válida: " + ValidarSintaxis(consulta));
     }
 }
 ```
